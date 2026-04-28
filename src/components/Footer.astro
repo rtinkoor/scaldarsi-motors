@@ -1,0 +1,109 @@
+---
+import { CDN } from '../lib/cdn';
+---
+
+<footer style="background:#1C1C1C;border-top:1px solid rgba(201,169,110,0.15);">
+
+  <!-- Main footer grid -->
+  <div class="footer-grid" style="max-width:1400px;margin:0 auto;padding:80px 40px 60px;display:grid;grid-template-columns:1fr 2fr 1fr;gap:60px;">
+
+    <!-- Column 1: Contact -->
+    <div>
+      <h4 style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#C9A96E;margin-bottom:28px;">Contact Scaldarsi</h4>
+      <div style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(255,255,255,0.65);line-height:1.8;">
+        <p style="color:rgba(255,255,255,0.85);margin-bottom:4px;">Montreal, Quebec</p>
+        <p style="margin-bottom:24px;">-1 (613) 371-3400</p>
+        <p style="color:rgba(255,255,255,0.85);margin-bottom:4px;">Riyadh, Saudi Arabia</p>
+        <p style="margin-bottom:24px;">+966 58 333 2873</p>
+        <a href="mailto:info@scaldarsimotors.com" style="color:#C9A96E;text-decoration:none;font-size:13px;letter-spacing:0.05em;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">info@scaldarsimotors.com</a>
+      </div>
+    </div>
+
+    <!-- Column 2: Philosophy -->
+    <div class="footer-center" style="border-left:1px solid rgba(201,169,110,0.15);border-right:1px solid rgba(201,169,110,0.15);padding:0 60px;">
+      <h4 style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#C9A96E;margin-bottom:28px;">The Philosophy of Perfection —</h4>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:rgba(255,255,255,0.8);line-height:1.8;">
+        Scaldarsi Motors is proud to announce their newest collection, the Emperor. 110 vehicles ranging from some of the world's leading brands. Take the journey with us, and watch as we script art into history.
+      </p>
+      <div class="gold-divider" style="margin:28px 0 0 0;"></div>
+    </div>
+
+    <!-- Column 3: Follow -->
+    <div class="footer-follow" style="text-align:right;">
+      <h4 style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#C9A96E;margin-bottom:28px;">Follow Scaldarsi Motors</h4>
+      <div style="display:flex;gap:20px;justify-content:flex-end;margin-bottom:24px;">
+
+        <a href="https://www.facebook.com/scaldarsi" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="color:rgba(255,255,255,0.5);transition:color 0.2s;" onmouseover="this.style.color='#C9A96E'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+
+        <a href="https://www.instagram.com/scaldarsi_motors/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="color:rgba(255,255,255,0.5);transition:color 0.2s;" onmouseover="this.style.color='#C9A96E'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+
+      </div>
+
+      <a href="mailto:info@scaldarsimotors.com"
+         style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;letter-spacing:0.05em;display:block;text-align:right;transition:color 0.2s ease;"
+         onmouseover="this.style.color='#C9A96E'"
+         onmouseout="this.style.color='rgba(255,255,255,0.5)'">
+        info@scaldarsimotors.com
+      </a>
+
+      <!-- Logo watermark -->
+      <img
+        src={CDN.logo}
+        alt="Scaldarsi Motors"
+        width="56"
+        height="56"
+        loading="lazy"
+        decoding="async"
+        style="width:56px;height:56px;object-fit:contain;border-radius:50%;opacity:0.6;margin-left:auto;margin-top:28px;"
+      />
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom" style="border-top:1px solid rgba(201,169,110,0.1);max-width:1400px;margin:0 auto;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;">
+    <p style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.35);">© 2016 · Scaldarsi Motors</p>
+    <div style="display:flex;gap:24px;">
+      <a href="/about" style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#C9A96E'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Contact Us</a>
+      <a href="/privacy" style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#C9A96E'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Privacy Policy</a>
+      <a href="/legal" style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#C9A96E'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">Legal</a>
+    </div>
+  </div>
+
+</footer>
+
+<style>
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: 1fr !important;
+      gap: 40px !important;
+    }
+    .footer-center {
+      border-left: none !important;
+      border-right: none !important;
+      border-top: 1px solid rgba(201,169,110,0.15);
+      border-bottom: 1px solid rgba(201,169,110,0.15);
+      padding: 40px 0 !important;
+    }
+    .footer-follow {
+      text-align: left !important;
+    }
+    .footer-follow > div {
+      justify-content: flex-start !important;
+    }
+    .footer-follow > a {
+      text-align: left !important;
+    }
+    .footer-follow > img {
+      margin-left: 0 !important;
+    }
+    .footer-bottom {
+      flex-direction: column !important;
+      gap: 12px !important;
+    }
+  }
+</style>

@@ -1,0 +1,56 @@
+---
+interface Props {
+  title: string;
+  tagline: string;
+  image: string;
+  priceDisplay: string;
+  specs: Record<string, string | number>;
+  slug: string;
+  type: 'yachts' | 'jets';
+  featured?: boolean;
+}
+
+const { title, tagline, image, priceDisplay, specs, slug, type } = Astro.props;
+---
+
+<article class="luxury-card" style="overflow:hidden;">
+
+  <div style="position:relative;overflow:hidden;aspect-ratio:16/10;">
+    <img
+      src={image}
+      alt={title}
+      width="800"
+      height="500"
+      loading="lazy"
+      decoding="async"
+      style="width:100%;height:100%;object-fit:cover;transition:transform 0.8s ease;display:block;"
+      class="card-img"
+    />
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.85) 100%);"></div>
+  </div>
+
+  <div style="padding:28px 32px 32px;">
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#fff;margin-bottom:8px;">{title}</h3>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:rgba(255,255,255,0.5);margin-bottom:20px;">{tagline}</p>
+
+    <!-- Specs -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;padding:20px;border:1px solid rgba(201,169,110,0.15);background:rgba(201,169,110,0.03);">
+      {Object.entries(specs).map(([key, val]) => (
+        <div>
+          <p style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:4px;">{key}</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:rgba(255,255,255,0.8);">{val}</p>
+        </div>
+      ))}
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.1em;color:#C9A96E;">{priceDisplay}</span>
+      <a href={`/${type}/${slug}`} class="btn-gold" style="padding:10px 24px;font-size:10px;">Inquire</a>
+    </div>
+  </div>
+
+</article>
+
+<style>
+  article:hover .card-img { transform: scale(1.04); }
+</style>

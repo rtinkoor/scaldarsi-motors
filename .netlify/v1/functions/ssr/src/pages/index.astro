@@ -1,0 +1,159 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VehicleCard from '../components/VehicleCard.astro';
+import ContactForm from '../components/ContactForm.tsx';
+import { getCollection } from 'astro:content';
+import { CDN } from '../lib/cdn';
+
+const featured = (await getCollection('vehicles'))
+  .filter(v => v.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout title="Scaldarsi Motors — The Philosophy of Perfection">
+
+  <!-- HERO: Full viewport, logo centred -->
+  <section style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:0 24px;">
+
+    <!-- Background image with dark overlay -->
+    <div style="position:absolute;inset:0;z-index:0;">
+      <img
+        src={CDN.sideProfile}
+        alt=""
+        aria-hidden="true"
+        width="1920"
+        height="1080"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.25;"
+      />
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.8) 100%);"></div>
+    </div>
+
+    <!-- Content -->
+    <div style="position:relative;z-index:1;" class="fade-in">
+      <img
+        src={CDN.logo}
+        alt="Scaldarsi Motors"
+        width="120"
+        height="120"
+        loading="eager"
+        decoding="async"
+        style="width:120px;height:120px;object-fit:contain;border-radius:50%;margin-bottom:40px;"
+      />
+      <h1 class="metallic-gold" style="font-family:'Cinzel',serif;font-size:clamp(36px,6vw,72px);font-weight:400;letter-spacing:0.25em;text-transform:uppercase;line-height:1.1;margin-bottom:8px;">
+        Scaldarsi
+      </h1>
+      <h2 class="metallic-gold" style="font-family:'Cinzel',serif;font-size:clamp(36px,6vw,72px);font-weight:400;letter-spacing:0.4em;text-transform:uppercase;line-height:1.1;margin-bottom:32px;">
+        Motors
+      </h2>
+      <p class="fade-in-delay-1" style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px;">Montreal</p>
+      <div class="gold-divider fade-in-delay-1" style="margin:0 auto 40px;"></div>
+      <p class="fade-in-delay-2" style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2vw,22px);font-style:italic;color:rgba(255,255,255,0.65);max-width:600px;margin:0 auto 48px;line-height:1.7;">
+        Scripting art into history.
+      </p>
+      <a href="/emperor" class="btn-gold fade-in-delay-3">Enter the Collection</a>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:1;animation:scrollBounce 2s ease-in-out infinite;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(201,169,110,0.6)" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+
+  </section>
+
+  <!-- EMPEROR TEASER -->
+  <section class="section-pad" style="max-width:1400px;margin:0 auto;padding-left:40px;padding-right:40px;">
+    <div style="text-align:center;margin-bottom:64px;">
+      <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px;">The Collection</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,52px);font-weight:400;color:#fff;margin-bottom:20px;line-height:1.2;">The Emperor Collection</h2>
+      <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.5);max-width:480px;margin:0 auto;">110 vehicles. Each one a masterpiece. The heirloom of the 21st century.</p>
+    </div>
+
+    <div class="vehicle-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:56px;">
+      {featured.map(v => (
+        <VehicleCard
+          title={v.data.title}
+          tagline={v.data.tagline}
+          image={v.data.image}
+          finish={v.data.finish}
+          specification={v.data.specification}
+          priceDisplay={v.data.priceDisplay}
+          slug={v.slug}
+          featured={v.data.featured}
+        />
+      ))}
+    </div>
+
+    <div style="text-align:center;">
+      <a href="/emperor" class="btn-gold">Explore the Collection</a>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY SECTION -->
+  <section style="background:#1C1C1C;padding:120px 40px;text-align:center;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;opacity:0.04;">
+      <img src={CDN.dashboard} alt="" aria-hidden="true" width="1920" height="1080" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;" />
+    </div>
+    <div style="position:relative;z-index:1;max-width:800px;margin:0 auto;">
+      <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#C9A96E;margin-bottom:40px;">The Philosophy of Perfection</p>
+      <blockquote style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3.5vw,42px);font-style:italic;color:#fff;line-height:1.5;margin-bottom:40px;font-weight:400;">
+        "The Emperor Series embodies craftsmanship at its finest — a compilation of distinguished, international, master craftsmen."
+      </blockquote>
+      <div class="gold-divider" style="margin:0 auto 40px;"></div>
+      <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.5);line-height:1.8;margin-bottom:40px;">
+        Every curve of the Emperor highlights Scaldarsi's unwavering commitment to product excellence, embodying integrity and evolution. Superseding the automotive industry, each Emperor is a masterpiece — the heirloom of the 21st century. The monument to artistry.
+      </p>
+      <a href="/about" class="btn-gold">Our Philosophy</a>
+    </div>
+  </section>
+
+  <!-- ASSET TEASERS (Yachts & Jets) -->
+  <section class="section-pad" style="max-width:1400px;margin:0 auto;padding-left:40px;padding-right:40px;">
+    <div class="teaser-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+
+      <!-- Yachts teaser -->
+      <a href="/yachts" style="display:block;position:relative;overflow:hidden;aspect-ratio:4/3;text-decoration:none;" class="teaser-link">
+        <img src={CDN.sideLook} alt="Scaldarsi Yachts" width="800" height="600" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform 0.8s ease;" class="teaser-img" />
+        <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 60%);"></div>
+        <div style="position:absolute;bottom:40px;left:40px;">
+          <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#C9A96E;margin-bottom:8px;">Maritime</p>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:400;color:#fff;">Scaldarsi Yachts</h3>
+        </div>
+      </a>
+
+      <!-- Jets teaser -->
+      <a href="/jets" style="display:block;position:relative;overflow:hidden;aspect-ratio:4/3;text-decoration:none;" class="teaser-link">
+        <img src={CDN.blackProfile} alt="Scaldarsi Private Jets" width="800" height="600" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;transition:transform 0.8s ease;" class="teaser-img" />
+        <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 60%);"></div>
+        <div style="position:absolute;bottom:40px;left:40px;">
+          <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#C9A96E;margin-bottom:8px;">Aviation</p>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:400;color:#fff;">Private Jets</h3>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section style="text-align:center;padding:100px 40px;border-top:1px solid rgba(201,169,110,0.1);">
+    <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px;">Begin Your Journey</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,44px);font-weight:400;color:#fff;margin-bottom:20px;">Enter the World of Scaldarsi Motors</h2>
+    <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.4);margin-bottom:40px;">Montreal · Riyadh</p>
+    <a href="/about#contact" class="btn-gold">Begin Your Inquiry</a>
+  </section>
+
+</Layout>
+
+<style>
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+    50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
+  }
+  .teaser-link:hover .teaser-img { transform: scale(1.04); }
+  @media (max-width: 900px) {
+    .vehicle-grid { grid-template-columns: 1fr !important; }
+    .teaser-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
