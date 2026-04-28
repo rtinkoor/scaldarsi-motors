@@ -44,6 +44,70 @@ import { CDN } from '../lib/cdn';
 
   </section>
 
+  <!-- THE EMPEROR I — Specs & Story -->
+  <section style="padding:120px 80px;background:#000;border-top:1px solid rgba(201,169,110,0.1);">
+    <div style="max-width:1200px;margin:0 auto;">
+
+      <div style="text-align:center;margin-bottom:80px;">
+        <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px;">The Emperor I</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,52px);font-weight:400;color:#fff;line-height:1.2;margin-bottom:20px;">Where Obsession<br/>Becomes Object</h2>
+        <div class="gold-divider" style="margin:0 auto;"></div>
+      </div>
+
+      <!-- Four pillar stats -->
+      <div class="stats-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:80px;">
+        {[
+          { number: '888', unit: 'Horsepower', detail: 'Brabus-tuned V12' },
+          { number: '24K', unit: 'Gold', detail: 'Body elements' },
+          { number: '24', unit: 'Leathers', detail: 'Exotic animal hides' },
+          { number: '110', unit: 'Units', detail: 'Produced worldwide' },
+        ].map(stat => (
+          <div style="border:1px solid rgba(201,169,110,0.12);padding:48px 32px;text-align:center;background:rgba(201,169,110,0.02);">
+            <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5vw,64px);font-weight:400;color:#fff;line-height:1;margin-bottom:8px;">{stat.number}</p>
+            <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#C9A96E;margin-bottom:8px;">{stat.unit}</p>
+            <p style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.3);">{stat.detail}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Story paragraph -->
+      <div style="max-width:800px;margin:0 auto;text-align:center;">
+        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;margin-bottom:24px;">
+          The Emperor I begins as a Mercedes-Maybach S600 — itself one of the world's most refined production vehicles. Scaldarsi's master craftsmen then spend months transforming it: a 6.2-litre twin-turbo V12 elevated by Brabus to 888 horsepower, 24-karat gold body elements applied by hand, and an interior assembled from twenty-four exotic animal leathers and seventy-eight types of wood veneer.
+        </p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;margin-bottom:24px;">
+          Each of the 110 Emperors is unique. Not a variant. Not a trim level. A singular commission — designed in dialogue with its owner, built by hand, and delivered as an heirloom rather than an automobile.
+        </p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:rgba(255,255,255,0.4);line-height:1.7;">
+          "Not an automobile. An heirloom."
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- THE SCALDARSI WAY -->
+  <section style="padding:120px 80px;background:#0a0a0a;border-top:1px solid rgba(201,169,110,0.08);">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start;" class="scaldarsi-way-grid">
+      <div>
+        <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:20px;">The Vision</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,44px);font-weight:400;color:#fff;line-height:1.2;">The Scaldarsi<br/>Way</h2>
+      </div>
+      <div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;margin-bottom:24px;">
+          The Emperor was never meant to stand alone. Scaldarsi's founding vision — the Scaldarsi Way — held that true luxury is a complete world. An Emperor owner would never step from their car into an aircraft or onto a vessel that did not share its soul.
+        </p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;margin-bottom:40px;">
+          The same 24-karat gold appointments, the same exotic leathers, the same obsessive craftsmanship — extended to Scaldarsi Yachts and Scaldarsi Private Jets. A total philosophy. A unified aesthetic. One way of moving through the world.
+        </p>
+        <div style="display:flex;gap:20px;flex-wrap:wrap;">
+          <a href="/yachts" class="btn-gold" style="padding:12px 32px;font-size:10px;">Scaldarsi Yachts</a>
+          <a href="/jets" class="btn-gold" style="padding:12px 32px;font-size:10px;">Private Jets</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Philosophy quote -->
   <section style="background:#1C1C1C;padding:100px 40px;text-align:center;">
     <div style="max-width:800px;margin:0 auto;">
@@ -138,5 +202,8 @@ import { CDN } from '../lib/cdn';
   @media (max-width: 768px) {
     .heritage-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
     .locations-grid { grid-template-columns: 1fr !important; }
+    .stats-grid { grid-template-columns: 1fr 1fr !important; }
+    .scaldarsi-way-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+    section[style*="padding:120px 80px"] { padding: 80px 24px !important; }
   }
 </style>

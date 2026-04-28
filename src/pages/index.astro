@@ -1,12 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import VehicleCard from '../components/VehicleCard.astro';
-import { getCollection } from 'astro:content';
 import { CDN } from '../lib/cdn';
-
-const featured = (await getCollection('vehicles'))
-  .filter(v => v.data.featured)
-  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <Layout title="Scaldarsi Motors — The Philosophy of Perfection">
@@ -63,30 +57,26 @@ const featured = (await getCollection('vehicles'))
   </section>
 
   <!-- EMPEROR TEASER -->
-  <section class="section-pad" style="max-width:1400px;margin:0 auto;padding-left:40px;padding-right:40px;">
-    <div style="text-align:center;margin-bottom:64px;">
-      <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px;">The Collection</p>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,52px);font-weight:400;color:#fff;margin-bottom:20px;line-height:1.2;">The Emperor Collection</h2>
-      <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.5);max-width:480px;margin:0 auto;">110 vehicles. Each one a masterpiece. The heirloom of the 21st century.</p>
-    </div>
-
-    <div class="vehicle-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:56px;">
-      {featured.map(v => (
-        <VehicleCard
-          title={v.data.title}
-          tagline={v.data.tagline}
-          image={v.data.image}
-          finish={v.data.finish}
-          specification={v.data.specification}
-          priceDisplay={v.data.priceDisplay}
-          slug={v.slug}
-          featured={v.data.featured}
-        />
-      ))}
-    </div>
-
-    <div style="text-align:center;">
-      <a href="/emperor" class="btn-gold">Explore the Collection</a>
+  <section style="position:relative;overflow:hidden;">
+    <img
+      src="https://scaldarsimotors.b-cdn.net/emperor-side-profile.jpg"
+      alt="The Emperor I by Scaldarsi Motors"
+      width="1920"
+      height="1080"
+      loading="lazy"
+      decoding="async"
+      style="width:100%;height:90vh;object-fit:cover;object-position:center;display:block;"
+    />
+    <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.05) 100%);"></div>
+    <div style="position:absolute;inset:0;display:flex;align-items:center;z-index:1;padding:0 80px;">
+      <div style="max-width:600px;">
+        <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:20px;">The Collection</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,72px);font-weight:400;color:#fff;line-height:1.1;margin-bottom:16px;">The Emperor I</h2>
+        <div class="gold-divider" style="margin:0 0 24px 0;"></div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:16px;">888 horsepower. 24-karat gold.</p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:40px;">110 units. Each one a masterpiece.</p>
+        <a href="/emperor" class="btn-gold">Explore the Emperor</a>
+      </div>
     </div>
   </section>
 
@@ -152,7 +142,6 @@ const featured = (await getCollection('vehicles'))
   }
   .teaser-link:hover .teaser-img { transform: scale(1.04); }
   @media (max-width: 900px) {
-    .vehicle-grid { grid-template-columns: 1fr !important; }
     .teaser-grid { grid-template-columns: 1fr !important; }
   }
 </style>

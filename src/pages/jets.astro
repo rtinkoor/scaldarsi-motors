@@ -1,46 +1,69 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import AssetCard from '../components/AssetCard.astro';
-import { getCollection } from 'astro:content';
-import { CDN } from '../lib/cdn';
 
-const jets = await getCollection('jets');
+const heroImage = 'https://scaldarsimotors.b-cdn.net/scaldarsi-private-jet.jpg';
 ---
 
-<Layout title="Private Jets" description="Private aviation, redefined. Scaldarsi's airborne fleet — the Philosophy of Perfection above the clouds.">
+<Layout
+  title="Private Jets"
+  description="The Scaldarsi Way takes flight. Private aviation bearing the Emperor's philosophy above the clouds."
+  ogImage={heroImage}
+>
 
-  <!-- Hero -->
-  <section style="min-height:60vh;display:flex;align-items:flex-end;padding:80px 40px;position:relative;overflow:hidden;">
-    <img src={CDN.silhouette} alt="" aria-hidden="true" width="1920" height="1080" loading="eager" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.25;" />
-    <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%);"></div>
-    <div style="position:relative;z-index:1;" class="fade-in">
-      <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px;">Private Aviation</p>
-      <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,72px);font-weight:400;color:#fff;margin-bottom:20px;">Private Jets</h1>
-      <div class="gold-divider" style="margin:0 0 24px 0;"></div>
-      <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);max-width:440px;line-height:1.7;">The sky, privatised. An automotive heir translated to aviation — craftsmanship at its finest, above the clouds.</p>
+  <!-- HERO: Full viewport -->
+  <section style="height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;">
+    <img
+      src={heroImage}
+      alt="Scaldarsi Private Jets"
+      width="1920"
+      height="1080"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;"
+    />
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.75) 100%);"></div>
+    <div style="position:relative;z-index:1;padding:0 40px;" class="fade-in">
+      <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:20px;">The Scaldarsi Way</p>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(48px,7vw,96px);font-weight:400;color:#fff;line-height:1;margin-bottom:24px;">Private<br/>Jets</h1>
+      <div class="gold-divider" style="margin:0 auto 28px;"></div>
+      <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);max-width:520px;margin:0 auto 48px;line-height:1.8;">
+        The sky, privatised. The Emperor's philosophy, airborne.
+      </p>
     </div>
   </section>
 
-  <!-- Grid -->
-  <div class="jets-grid" style="max-width:1400px;margin:0 auto;padding:80px 40px;display:grid;grid-template-columns:repeat(2,1fr);gap:28px;">
-    {jets.map(j => (
-      <AssetCard
-        title={j.data.title}
-        tagline={j.data.tagline}
-        image={j.data.image}
-        priceDisplay={j.data.priceDisplay}
-        specs={{ 'Range': j.data.specs.range, 'Passengers': String(j.data.specs.passengers), 'Speed': j.data.specs.speed, 'Ceiling': j.data.specs.ceiling }}
-        slug={j.slug}
-        type="jets"
-        featured={j.data.featured}
-      />
-    ))}
-  </div>
+  <!-- VISION STATEMENT -->
+  <section style="padding:140px 80px;max-width:900px;margin:0 auto;text-align:center;">
+    <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:32px;">Coming Soon</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,52px);font-weight:400;color:#fff;line-height:1.2;margin-bottom:32px;">
+      The Emperor's Aesthetic.<br/>Above the Clouds.
+    </h2>
+    <div class="gold-divider" style="margin:0 auto 32px;"></div>
+    <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;margin-bottom:24px;">
+      The Scaldarsi Way was conceived as a total philosophy — not a single product. An Emperor owner would never step from their car into an aircraft that did not share its soul. Scaldarsi Private Jets was born from that conviction.
+    </p>
+    <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;margin-bottom:24px;">
+      Each cabin will bear the same 24-karat gold appointments, the same exotic leathers, the same obsessive attention to every surface that the Emperor carries on the road. The journey continues — at altitude.
+    </p>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:rgba(255,255,255,0.45);line-height:1.7;">
+      "Craftsmanship at its finest recognises no ceiling."
+    </p>
+  </section>
+
+  <!-- REGISTER INTEREST CTA -->
+  <section style="background:#1C1C1C;padding:120px 40px;text-align:center;border-top:1px solid rgba(201,169,110,0.1);border-bottom:1px solid rgba(201,169,110,0.1);">
+    <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:20px;">Priority Registration</p>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.5vw,44px);font-weight:400;color:#fff;margin-bottom:16px;">Register Your Interest</h3>
+    <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.4);margin-bottom:48px;">Be among the first to commission a Scaldarsi private jet. By appointment only.</p>
+    <a href="/about#contact" class="btn-gold">Register Interest</a>
+  </section>
 
 </Layout>
 
 <style>
   @media (max-width: 768px) {
-    .jets-grid { grid-template-columns: 1fr !important; }
+    section[style*="padding:140px 80px"] { padding: 80px 24px !important; }
+    section[style*="padding:120px 40px"] { padding: 80px 24px !important; }
   }
 </style>

@@ -1,89 +1,263 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import VehicleCard from '../components/VehicleCard.astro';
-import { getCollection } from 'astro:content';
-import { CDN } from '../lib/cdn';
 
-const vehicles = (await getCollection('vehicles')).sort((a, b) => a.data.order - b.data.order);
+const images = {
+  sideProfile: 'https://scaldarsimotors.b-cdn.net/emperor-side-profile.jpg',
+  blackProfile: 'https://scaldarsimotors.b-cdn.net/black-side-profile.jpg',
+  behind: 'https://scaldarsimotors.b-cdn.net/emperor-behind-look.jpg',
+  frontDark: 'https://scaldarsimotors.b-cdn.net/front-dark.jpg',
+  silhouette: 'https://scaldarsimotors.b-cdn.net/emperor-silhoutte.jpg',
+  sideLook: 'https://scaldarsimotors.b-cdn.net/emperor-side-look.jpg',
+  dashboard: 'https://scaldarsimotors.b-cdn.net/Emperor-dashboard.jpg',
+};
 ---
 
 <Layout
   title="Emperor Collection"
-  description="110 vehicles. Each one a masterpiece. The Emperor Collection by Scaldarsi Motors — the heirloom of the 21st century."
+  description="The Emperor I by Scaldarsi Motors. 888 horsepower. 24-karat gold. 110 units. The heirloom of the 21st century."
+  ogImage={images.sideProfile}
 >
 
-  <!-- Hero -->
-  <section style="min-height:60vh;display:flex;align-items:flex-end;justify-content:flex-start;position:relative;overflow:hidden;padding:80px 40px;">
-    <img src={CDN.sideProfile} alt="" aria-hidden="true" width="1920" height="1080" loading="eager" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.3;" />
-    <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%);"></div>
-    <div style="position:relative;z-index:1;max-width:700px;" class="fade-in">
-      <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px;">Scaldarsi Motors</p>
-      <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,72px);font-weight:400;color:#fff;line-height:1.1;margin-bottom:20px;">The Emperor<br/>Collection</h1>
-      <div class="gold-divider" style="margin:0 0 24px 0;"></div>
-      <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.7;max-width:480px;">110 vehicles. Each one a chapter. Each one a masterpiece. The heirloom of the 21st century. The monument to artistry.</p>
+  <!-- HERO: Full viewport, side profile -->
+  <section style="height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:flex-start;">
+    <img
+      src={images.sideProfile}
+      alt="The Emperor I by Scaldarsi Motors"
+      width="1920"
+      height="1080"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;"
+    />
+    <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.1) 100%);"></div>
+    <div style="position:relative;z-index:1;padding:0 80px;max-width:700px;" class="fade-in">
+      <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:20px;">Scaldarsi Motors — Est. 2016</p>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(52px,7vw,96px);font-weight:400;color:#fff;line-height:1;margin-bottom:24px;">The<br/>Emperor I</h1>
+      <div class="gold-divider" style="margin:0 0 28px 0;"></div>
+      <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.8;max-width:440px;margin-bottom:40px;">
+        110 units. Each one a masterpiece.<br/>The heirloom of the 21st century.
+      </p>
+      <a href="#inquire" class="btn-gold">Begin Your Inquiry</a>
+    </div>
+    <!-- Scroll indicator -->
+    <div style="position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:1;animation:scrollBounce 2s ease-in-out infinite;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(201,169,110,0.6)" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
     </div>
   </section>
 
-  <!-- Filter bar -->
-  <div style="border-top:1px solid rgba(201,169,110,0.15);border-bottom:1px solid rgba(201,169,110,0.15);padding:20px 40px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
-    <span style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-right:8px;">Filter:</span>
-    {['All', 'Matte', 'Gloss', 'Metallic', 'Raw'].map(f => (
-      <button data-filter={f} class={`filter-btn ${f === 'All' ? 'active' : ''}`} style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;border:1px solid rgba(201,169,110,0.25);background:transparent;color:rgba(255,255,255,0.5);padding:8px 18px;cursor:pointer;transition:all 0.2s ease;">
-        {f}
-      </button>
-    ))}
-  </div>
+  <!-- SECTION 1: The Statement -->
+  <section style="padding:140px 80px;max-width:1000px;margin:0 auto;text-align:center;">
+    <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:32px;">The Philosophy of Perfection</p>
+    <blockquote style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.5vw,44px);font-style:italic;font-weight:400;color:#fff;line-height:1.5;margin-bottom:32px;">
+      "The Emperor Series embodies craftsmanship at its finest — a compilation of distinguished, international, master craftsmen."
+    </blockquote>
+    <div class="gold-divider" style="margin:0 auto 32px;"></div>
+    <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.5);line-height:1.9;max-width:640px;margin:0 auto;">
+      Every curve highlights Scaldarsi's unwavering commitment to product excellence, embodying integrity and evolution. Superseding the automotive industry, the Emperor I is not an automobile. It is an heirloom.
+    </p>
+  </section>
 
-  <!-- Grid -->
-  <div id="vehicles-grid" style="max-width:1400px;margin:0 auto;padding:60px 40px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;">
-    {vehicles.map(v => (
-      <div data-finish={v.data.finish} class="vehicle-item">
-        <VehicleCard
-          title={v.data.title}
-          tagline={v.data.tagline}
-          image={v.data.image}
-          finish={v.data.finish}
-          specification={v.data.specification}
-          priceDisplay={v.data.priceDisplay}
-          slug={v.slug}
-          featured={v.data.featured}
-        />
+  <!-- IMAGE: Front face, full bleed -->
+  <section style="position:relative;overflow:hidden;">
+    <img
+      src={images.frontDark}
+      alt="Emperor I — front"
+      width="1920"
+      height="1080"
+      loading="lazy"
+      decoding="async"
+      style="width:100%;height:80vh;object-fit:cover;object-position:center;display:block;"
+    />
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.4) 100%);"></div>
+    <!-- Floating spec: centred on image -->
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;">
+      <div style="text-align:center;background:rgba(0,0,0,0.55);border:1px solid rgba(201,169,110,0.25);backdrop-filter:blur(8px);padding:40px 60px;">
+        <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px;">Power</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(48px,7vw,80px);font-weight:400;color:#fff;line-height:1;margin-bottom:8px;">888</p>
+        <p style="font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);">Horsepower</p>
       </div>
-    ))}
-  </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: The Engineering -->
+  <section style="padding:140px 80px;display:grid;grid-template-columns:1fr 1fr;gap:120px;max-width:1400px;margin:0 auto;align-items:center;">
+    <div>
+      <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:24px;">The Engineering</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,56px);font-weight:400;color:#fff;line-height:1.15;margin-bottom:28px;">Brabus-Tuned.<br/>Twin-Turbo.<br/>Uncompromising.</h2>
+      <div class="gold-divider" style="margin:0 0 28px 0;"></div>
+      <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;margin-bottom:20px;">
+        Beneath the Emperor I lies a 6.2-litre twin-turbocharged V12 engine, entrusted to Brabus — the world's foremost Mercedes tuning authority — and elevated to 888 horsepower.
+      </p>
+      <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;">
+        The result is a machine that commands silence and velocity in equal measure. A monument to engineering as artistry.
+      </p>
+    </div>
+    <!-- Spec grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;">
+      {[
+        { label: 'Engine', value: '6.2L V12' },
+        { label: 'Output', value: '888 HP' },
+        { label: 'Tuned By', value: 'Brabus' },
+        { label: 'Units', value: '110' },
+        { label: 'Base', value: 'Maybach S600' },
+        { label: 'Price', value: 'Upon Request' },
+      ].map(spec => (
+        <div style="border:1px solid rgba(201,169,110,0.12);padding:28px 24px;background:rgba(201,169,110,0.02);">
+          <p style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:10px;">{spec.label}</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:#fff;">{spec.value}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- IMAGE: Rear three-quarter, full bleed -->
+  <section style="position:relative;overflow:hidden;">
+    <img
+      src={images.behind}
+      alt="Emperor I — rear"
+      width="1920"
+      height="1080"
+      loading="lazy"
+      decoding="async"
+      style="width:100%;height:85vh;object-fit:cover;object-position:center;display:block;"
+    />
+    <div style="position:absolute;inset:0;background:linear-gradient(to left, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.05) 100%);"></div>
+    <div style="position:absolute;right:80px;bottom:60px;z-index:1;text-align:right;max-width:380px;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.5vw,28px);font-style:italic;color:rgba(255,255,255,0.8);line-height:1.6;">
+        "Superseding the automotive industry — each Emperor is a masterpiece."
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 3: The Gold -->
+  <section style="background:#1C1C1C;padding:140px 80px;">
+    <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:120px;align-items:center;">
+      <div style="position:relative;">
+        <img
+          src={images.blackProfile}
+          alt="Emperor I — obsidian profile"
+          width="900"
+          height="600"
+          loading="lazy"
+          decoding="async"
+          style="width:100%;height:auto;object-fit:cover;border:1px solid rgba(201,169,110,0.2);display:block;"
+        />
+        <div style="position:absolute;bottom:-20px;right:-20px;width:80%;height:80%;border:1px solid rgba(201,169,110,0.12);z-index:-1;"></div>
+      </div>
+      <div>
+        <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:24px;">The Gold</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:400;color:#fff;line-height:1.15;margin-bottom:28px;">Timeless.<br/>The Wealth of<br/>Centuries.</h2>
+        <div class="gold-divider" style="margin:0 0 28px 0;"></div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;margin-bottom:20px;">
+          The Emperor I is meticulously detailed in 24-karat gold finishes. The precious metal elements are crafted from the finest ores — ensuring durability and radiant luster across every surface they grace.
+        </p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;">
+          The natural beauty of gold has represented luxury since the dawn of time. Let your Emperor honour that prestige through the open roadways.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE: Silhouette, full bleed dark -->
+  <section style="position:relative;overflow:hidden;background:#000;">
+    <img
+      src={images.silhouette}
+      alt="Emperor I — silhouette"
+      width="1920"
+      height="1080"
+      loading="lazy"
+      decoding="async"
+      style="width:100%;height:75vh;object-fit:cover;object-position:center;display:block;opacity:0.7;"
+    />
+  </section>
+
+  <!-- SECTION 4: The Interior -->
+  <section style="padding:140px 80px;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:120px;align-items:center;">
+    <div>
+      <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:24px;">The Interior</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:400;color:#fff;line-height:1.15;margin-bottom:28px;">24 Leathers.<br/>78 Veneers.<br/>One Vision.</h2>
+      <div class="gold-divider" style="margin:0 0 28px 0;"></div>
+      <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;margin-bottom:20px;">
+        The Emperor I cabin is a world unto itself. Twenty-four exotic animal leathers and seventy-eight types of wood veneer form the palette from which your interior is composed.
+      </p>
+      <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;margin-bottom:40px;">
+        No two Emperors are alike. Every commission is a singular act of creation — a dialogue between the craftsman and the collector.
+      </p>
+      <!-- Interior stats -->
+      <div style="display:flex;gap:40px;">
+        <div style="border-left:1px solid rgba(201,169,110,0.3);padding-left:20px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:400;color:#fff;line-height:1;margin-bottom:6px;">24</p>
+          <p style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);">Exotic Leathers</p>
+        </div>
+        <div style="border-left:1px solid rgba(201,169,110,0.3);padding-left:20px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:400;color:#fff;line-height:1;margin-bottom:6px;">78</p>
+          <p style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);">Wood Veneers</p>
+        </div>
+        <div style="border-left:1px solid rgba(201,169,110,0.3);padding-left:20px;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:400;color:#fff;line-height:1;margin-bottom:6px;">110</p>
+          <p style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);">Units Only</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <img
+        src={images.dashboard}
+        alt="Emperor I — interior"
+        width="900"
+        height="700"
+        loading="lazy"
+        decoding="async"
+        style="width:100%;height:auto;object-fit:cover;border:1px solid rgba(201,169,110,0.2);display:block;"
+      />
+    </div>
+  </section>
+
+  <!-- IMAGE: Final side look, full bleed -->
+  <section style="position:relative;overflow:hidden;">
+    <img
+      src={images.sideLook}
+      alt="Emperor I — profile"
+      width="1920"
+      height="1080"
+      loading="lazy"
+      decoding="async"
+      style="width:100%;height:85vh;object-fit:cover;object-position:center;display:block;"
+    />
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);"></div>
+    <div style="position:absolute;bottom:80px;left:50%;transform:translateX(-50%);z-index:1;text-align:center;width:100%;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,36px);font-style:italic;color:rgba(255,255,255,0.75);">
+        "Take the journey with us, and watch as we script art into history."
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 5: Inquire CTA -->
+  <section id="inquire" style="padding:140px 80px;text-align:center;border-top:1px solid rgba(201,169,110,0.1);">
+    <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:20px;">110 Units. Begin Your Commission.</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,56px);font-weight:400;color:#fff;margin-bottom:16px;">Secure Your Emperor</h2>
+    <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.4);margin-bottom:48px;">Montreal · Riyadh · By appointment only</p>
+    <a href="/about#contact" class="btn-gold">Begin Your Inquiry</a>
+  </section>
 
 </Layout>
 
 <style>
-  .filter-btn:hover, .filter-btn.active {
-    border-color: #C9A96E !important;
-    color: #C9A96E !important;
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity:0.6; }
+    50% { transform: translateX(-50%) translateY(8px); opacity:1; }
   }
   @media (max-width: 900px) {
-    #vehicles-grid { grid-template-columns: 1fr !important; }
-  }
-  @media (min-width: 600px) and (max-width: 900px) {
-    #vehicles-grid { grid-template-columns: 1fr 1fr !important; }
+    section[style*="grid-template-columns:1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+      gap: 60px !important;
+      padding: 80px 24px !important;
+    }
+    section[style*="padding:140px 80px"] {
+      padding: 80px 24px !important;
+    }
+    section[style*="padding:0 80px"] {
+      padding: 0 24px !important;
+    }
   }
 </style>
-
-<script>
-  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-  const items = document.querySelectorAll<HTMLElement>('.vehicle-item');
-
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter;
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      items.forEach(item => {
-        if (filter === 'All' || item.dataset.finish === filter) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    });
-  });
-</script>
