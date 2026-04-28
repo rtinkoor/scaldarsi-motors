@@ -8,15 +8,106 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  ogImageAlt?: string;
 }
 
 const {
   title,
   description = 'Scaldarsi Motors — International Manufacturing and Design. The Emperor Collection. Yachts. Private Jets. The Philosophy of Perfection.',
   ogImage = 'https://scaldarsimotors.b-cdn.net/emperor-side-profile.jpg',
+  ogImageAlt = 'Scaldarsi Motors — The Emperor I',
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://scaldarsimotors.com');
+const siteUrl = 'https://www.scaldarsimotors.com';
+const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
+const pageTitle = `${title} | Scaldarsi Motors`;
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'Scaldarsi Motors',
+      url: siteUrl,
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://scaldarsimotors.b-cdn.net/Scaldarsi%20motors%20-%20logo.jpg',
+        width: 400,
+        height: 400,
+      },
+      description: 'Scaldarsi Motors is an international Manufacturing and Design firm specializing in ultra-luxury vehicles, yachts, and private jets. Creators of the Emperor I — The Philosophy of Perfection.',
+      foundingDate: '2016',
+      foundingLocation: 'Montreal, Quebec, Canada',
+      address: [
+        {
+          '@type': 'PostalAddress',
+          addressLocality: 'Montreal',
+          addressRegion: 'Quebec',
+          addressCountry: 'CA',
+          telephone: '-1 (613) 371-3400',
+        },
+        {
+          '@type': 'PostalAddress',
+          addressLocality: 'Riyadh',
+          addressCountry: 'SA',
+          telephone: '+966 58 333 2873',
+        },
+      ],
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          telephone: '-1 (613) 371-3400',
+          contactType: 'sales',
+          areaServed: 'CA',
+        },
+        {
+          '@type': 'ContactPoint',
+          telephone: '+966 58 333 2873',
+          contactType: 'sales',
+          areaServed: 'SA',
+        },
+      ],
+      email: 'info@scaldarsimotors.com',
+      sameAs: [
+        'https://www.facebook.com/scaldarsi',
+        'https://www.instagram.com/scaldarsi_motors/',
+      ],
+      knowsAbout: [
+        'Ultra-luxury vehicles',
+        'Bespoke automotive customisation',
+        'Luxury yacht design',
+        'Private jet interiors',
+        '24-karat gold automotive finishes',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: 'Scaldarsi Motors',
+      description: 'The Philosophy of Perfection — ultra-luxury vehicles, yachts, and private jets.',
+      publisher: {
+        '@id': `${siteUrl}/#organization`,
+      },
+      inLanguage: 'en',
+    },
+    {
+      '@type': 'WebPage',
+      '@id': canonicalURL,
+      url: canonicalURL,
+      name: pageTitle,
+      description: description,
+      isPartOf: {
+        '@id': `${siteUrl}/#website`,
+      },
+      about: {
+        '@id': `${siteUrl}/#organization`,
+      },
+      inLanguage: 'en',
+    },
+  ],
+};
 ---
 
 <!DOCTYPE html>
@@ -24,19 +115,49 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://scaldars
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary meta -->
+  <title>{pageTitle}</title>
   <meta name="description" content={description} />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content={ogImage} />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Scaldarsi Motors" />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:alt" content={ogImageAlt} />
+  <meta property="og:image:width" content="1920" />
+  <meta property="og:image:height" content="1080" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter / X card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:image:alt" content={ogImageAlt} />
+
+  <!-- Structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
+  <!-- Sitemap discovery -->
+  <link rel="sitemap" href="/sitemap-index.xml" />
+
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <title>{title} | Scaldarsi Motors</title>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- CDN preconnect -->
   <link rel="preconnect" href="https://scaldarsimotors.b-cdn.net" />
+
   <ClientRouter />
 </head>
 <body style="background:#000; color:#fff;">
