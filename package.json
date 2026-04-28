@@ -12,14 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/netlify": "^7.0.8",
-    "@astrojs/react": "^5.0.4",
-    "@tailwindcss/vite": "^4.2.4",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
+    "@tailwindcss/postcss": "^4.2.4",
     "astro": "^6.1.9",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
+    "postcss": "^8.5.12",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.2.4"
   }

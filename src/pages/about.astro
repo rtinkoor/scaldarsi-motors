@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ContactForm from '../components/ContactForm.tsx';
 import { CDN } from '../lib/cdn';
 ---
 
@@ -86,7 +85,51 @@ import { CDN } from '../lib/cdn';
       <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:#C9A96E;margin-bottom:16px;">Begin Your Inquiry</p>
       <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,48px);font-weight:400;color:#fff;">Enter the World of Scaldarsi</h2>
     </div>
-    <ContactForm client:load />
+    <form
+      name="scaldarsi-inquiry"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      style="display:grid;grid-template-columns:1fr 1fr;gap:20px;"
+    >
+      <input type="hidden" name="form-name" value="scaldarsi-inquiry" />
+      <p style="display:none;"><input name="bot-field" /></p>
+
+      <div>
+        <label style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);display:block;margin-bottom:8px;">Name *</label>
+        <input type="text" name="name" required placeholder="Your name" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(201,169,110,0.25);color:#fff;padding:14px 18px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;box-sizing:border-box;" />
+      </div>
+
+      <div>
+        <label style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);display:block;margin-bottom:8px;">Email *</label>
+        <input type="email" name="email" required placeholder="your@email.com" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(201,169,110,0.25);color:#fff;padding:14px 18px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;box-sizing:border-box;" />
+      </div>
+
+      <div>
+        <label style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);display:block;margin-bottom:8px;">Phone</label>
+        <input type="tel" name="phone" placeholder="+1 000 000 0000" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(201,169,110,0.25);color:#fff;padding:14px 18px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;box-sizing:border-box;" />
+      </div>
+
+      <div>
+        <label style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);display:block;margin-bottom:8px;">Interest</label>
+        <select name="interest" style="width:100%;background:#0a0a0a;border:1px solid rgba(201,169,110,0.25);color:rgba(255,255,255,0.7);padding:14px 18px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;box-sizing:border-box;cursor:pointer;">
+          <option>Emperor Collection</option>
+          <option>Yachts</option>
+          <option>Private Jets</option>
+          <option>General Inquiry</option>
+        </select>
+      </div>
+
+      <div style="grid-column:1 / -1;">
+        <label style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);display:block;margin-bottom:8px;">Message *</label>
+        <textarea name="message" required rows="5" placeholder="Tell us about your inquiry..." style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(201,169,110,0.25);color:#fff;padding:14px 18px;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;box-sizing:border-box;resize:vertical;line-height:1.6;"></textarea>
+      </div>
+
+      <div style="grid-column:1 / -1;">
+        <button type="submit" class="btn-gold">Submit Inquiry</button>
+      </div>
+
+    </form>
   </section>
 
 </Layout>
