@@ -1,0 +1,193 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const images = {
+  dashboard:    'https://scaldarsimotors.b-cdn.net/Emperor-dashboard.jpg',
+  blackProfile: 'https://scaldarsimotors.b-cdn.net/black-side-profile.jpg',
+  sideLook:     'https://scaldarsimotors.b-cdn.net/emperor-side-look.jpg',
+  behind:       'https://scaldarsimotors.b-cdn.net/emperor-behind-look.jpg',
+  frontDark:    'https://scaldarsimotors.b-cdn.net/front-dark.jpg',
+  silhouette:   'https://scaldarsimotors.b-cdn.net/emperor-silhoutte.jpg',
+};
+---
+
+<Layout
+  title="The Atelier"
+  description="Inside the making of the Emperor I — the philosophy of 24-karat gold, 24 exotic leathers, and 78 wood veneers, composed by hand by master craftsmen. Scaldarsi Motors."
+  ogImage="https://scaldarsimotors.b-cdn.net/Emperor-dashboard.jpg"
+  ogImageAlt="The Emperor I interior by Scaldarsi Motors"
+>
+
+  <!-- SECTION 1 — HERO -->
+  <section style="height:100vh;position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:flex-start;">
+    <img
+      src={images.dashboard}
+      alt="The Emperor I interior by Scaldarsi Motors"
+      width="1920"
+      height="1080"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;"
+    />
+    <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.15) 100%);"></div>
+    <div style="position:relative;z-index:1;padding:0 80px 100px;max-width:680px;" class="fade-in">
+      <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:20px;">The Making</p>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(52px,7vw,96px);font-weight:400;color:#fff;line-height:1;margin-bottom:24px;">The<br/>Atelier</h1>
+      <div class="gold-divider" style="margin:0 0 28px 0;"></div>
+      <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.8;max-width:480px;margin-bottom:40px;">
+        An Emperor is not manufactured. It is composed — by hand, in precious materials, over time. This is where that begins.
+      </p>
+      <a href="/commission" class="btn-gold">Begin Your Commission</a>
+    </div>
+  </section>
+
+  <!-- SECTION 2 — LEDE -->
+  <section style="padding:140px 80px;text-align:center;">
+    <div style="max-width:800px;margin:0 auto;">
+      <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:20px;">Composed, Not Manufactured</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,56px);font-weight:400;color:#fff;line-height:1.15;margin-bottom:24px;">The Hand That Made It</h2>
+      <div class="gold-divider" style="margin:0 auto 32px;"></div>
+      <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;">
+        The difference between a luxury and an heirloom is the hand that made it. Every Emperor is assembled not on a line but in an atelier — a place where time is spent rather than saved, and where the measure of the work is not speed but permanence. What follows is not a specification. It is a sensibility.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 3 — THE MATERIALS -->
+  <section style="max-width:1200px;margin:0 auto;padding:0 40px 120px;">
+
+    <!-- Row 1: Gold -->
+    <div class="atelier-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-bottom:120px;">
+      <div>
+        <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:20px;">Twenty-Four Karat</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:400;color:#fff;line-height:1.15;margin-bottom:24px;">Gold</h2>
+        <div class="gold-divider" style="margin:0 0 28px 0;"></div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;">
+          Gold has signified permanence since the first civilisations chose it to outlast them. On the Emperor, twenty-four-karat gold is not decoration but declaration — a material that does not tarnish, fade, or apologise. It is chosen for what it has always meant: that what it touches is meant to endure.
+        </p>
+      </div>
+      <div style="position:relative;">
+        <img
+          src={images.blackProfile}
+          alt="Emperor I — obsidian profile"
+          width="600"
+          height="450"
+          loading="lazy"
+          decoding="async"
+          style="width:100%;height:auto;object-fit:cover;border:1px solid rgba(201,169,110,0.2);display:block;"
+        />
+        <div style="position:absolute;bottom:-16px;right:-16px;width:75%;height:75%;border:1px solid rgba(201,169,110,0.12);z-index:-1;"></div>
+      </div>
+    </div>
+
+    <!-- Row 2: Leather (image left) -->
+    <div class="atelier-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-bottom:120px;">
+      <div style="position:relative;">
+        <img
+          src={images.sideLook}
+          alt="Emperor I — side look"
+          width="600"
+          height="450"
+          loading="lazy"
+          decoding="async"
+          style="width:100%;height:auto;object-fit:cover;border:1px solid rgba(201,169,110,0.2);display:block;"
+        />
+        <div style="position:absolute;bottom:-16px;left:-16px;width:75%;height:75%;border:1px solid rgba(201,169,110,0.12);z-index:-1;"></div>
+      </div>
+      <div>
+        <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:20px;">Twenty-Four Leathers</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:400;color:#fff;line-height:1.15;margin-bottom:24px;">Leather</h2>
+        <div class="gold-divider" style="margin:0 0 28px 0;"></div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;">
+          Twenty-four exotic leathers form the palette of the cabin — not because twenty-four are needed, but because restraint is not the same as scarcity. To offer twenty-four is to insist that no two owners share a hand, and that every surface a passenger touches was a decision, not a default.
+        </p>
+      </div>
+    </div>
+
+    <!-- Row 3: Wood -->
+    <div class="atelier-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+      <div>
+        <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:20px;">Seventy-Eight Veneers</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:400;color:#fff;line-height:1.15;margin-bottom:24px;">Wood</h2>
+        <div class="gold-divider" style="margin:0 0 28px 0;"></div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;">
+          Seventy-eight wood veneers carry into the cabin what gold cannot: warmth, grain, the memory of something that once grew. Wood is the only material in the Emperor that was alive. It is worked slowly, because grain cannot be hurried, and matched by eye, because no machine yet sees the way a craftsman does.
+        </p>
+      </div>
+      <div style="position:relative;">
+        <img
+          src={images.behind}
+          alt="Emperor I — rear"
+          width="600"
+          height="450"
+          loading="lazy"
+          decoding="async"
+          style="width:100%;height:auto;object-fit:cover;border:1px solid rgba(201,169,110,0.2);display:block;"
+        />
+        <div style="position:absolute;bottom:-16px;right:-16px;width:75%;height:75%;border:1px solid rgba(201,169,110,0.12);z-index:-1;"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- SECTION 4 — THE HAND -->
+  <section style="padding:120px 80px;background:#0a0a0a;border-top:1px solid rgba(201,169,110,0.08);">
+    <div style="max-width:900px;margin:0 auto;text-align:center;">
+      <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:20px;">The Hand</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,48px);font-weight:400;color:#fff;line-height:1.2;margin-bottom:24px;">The Master's Mark</h2>
+      <div class="gold-divider" style="margin:0 auto 32px;"></div>
+      <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;">
+        The Emperor is, in Scaldarsi's own words, "a compilation of distinguished, international, master craftsmen." Machines make things identical; hands make them singular. Every stitch, inlay, and finish is the work of someone who has spent a life learning to do one thing exactly. That is why no two Emperors are alike — and why each carries, invisibly, the mark of the people who made it.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 5 — PULLQUOTE BAND -->
+  <section style="position:relative;overflow:hidden;">
+    <img
+      src={images.silhouette}
+      alt="Emperor I — silhouette"
+      width="1920"
+      height="1080"
+      loading="lazy"
+      decoding="async"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;"
+    />
+    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.72);"></div>
+    <div style="position:relative;z-index:1;padding:120px 80px;text-align:center;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,38px);font-style:italic;color:#fff;line-height:1.6;max-width:900px;margin:0 auto;">
+        "The Emperor Series embodies craftsmanship at its finest — a compilation of distinguished, international, master craftsmen."
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 6 — CLOSE + CTA -->
+  <section style="background:#1C1C1C;padding:140px 80px;text-align:center;border-top:1px solid rgba(201,169,110,0.1);">
+    <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:48px;">24-Karat Gold · 24 Leathers · 78 Veneers</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,56px);font-weight:400;color:#fff;margin-bottom:24px;">Composed for You</h2>
+    <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.45);line-height:1.9;max-width:560px;margin:0 auto 48px;">
+      Every Emperor begins as an empty page and a conversation. When you are ready to compose yours, the journey begins here.
+    </p>
+    <a href="/commission" class="btn-gold">Begin Your Commission</a>
+  </section>
+
+</Layout>
+
+<style>
+  @media (max-width: 768px) {
+    .atelier-grid {
+      grid-template-columns: 1fr !important;
+      gap: 40px !important;
+    }
+    section[style*="padding:140px 80px"] {
+      padding: 80px 24px !important;
+    }
+    section[style*="padding:120px 80px"] {
+      padding: 80px 24px !important;
+    }
+    section[style*="padding:0 40px 120px"] {
+      padding: 0 24px 60px !important;
+    }
+  }
+</style>
