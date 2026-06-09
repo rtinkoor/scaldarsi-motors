@@ -4,6 +4,7 @@ const currentPath = Astro.url.pathname;
 
 const navLinks = [
   { label: 'Emperor Collection', href: '/emperor' },
+  { label: 'The Commission', href: '/commission' },
   { label: 'Yachts', href: '/yachts' },
   { label: 'Private Jets', href: '/jets' },
   { label: 'About Us', href: '/about' },
@@ -42,9 +43,6 @@ const navLinks = [
 
     <!-- Icons -->
     <div style="display:flex;gap:20px;align-items:center;">
-      <a href="mailto:info@scaldarsimotors.com" aria-label="Email" style="color:rgba(255,255,255,0.6);transition:color 0.2s;" onmouseover="this.style.color='#C9A96E'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      </a>
       <!-- Mobile hamburger toggle -->
       <div id="mobile-menu-root" class="mobile-only"></div>
     </div>

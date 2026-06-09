@@ -1,0 +1,176 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const images = {
+  frontDark:    'https://scaldarsimotors.b-cdn.net/front-dark.jpg',
+  sideProfile:  'https://scaldarsimotors.b-cdn.net/emperor-side-profile.jpg',
+  blackProfile: 'https://scaldarsimotors.b-cdn.net/black-side-profile.jpg',
+  dashboard:    'https://scaldarsimotors.b-cdn.net/Emperor-dashboard.jpg',
+  behind:       'https://scaldarsimotors.b-cdn.net/emperor-behind-look.jpg',
+  sideLook:     'https://scaldarsimotors.b-cdn.net/emperor-side-look.jpg',
+  silhouette:   'https://scaldarsimotors.b-cdn.net/emperor-silhoutte.jpg',
+};
+
+const stages = [
+  {
+    numeral: 'I',
+    title: 'The Inquiry',
+    body: 'Every commission begins in confidence. A private inquiry opens a quiet conversation — about you, your vision, and whether the Emperor is the heirloom you are seeking. Discretion is absolute, and assumed.',
+    img: images.sideProfile,
+    alt: 'Emperor I — side profile',
+    imgFirst: false,
+  },
+  {
+    numeral: 'II',
+    title: 'The Consultation',
+    body: 'By invitation, you are received in Montreal or Riyadh. Here the philosophy becomes tangible: the materials, the engineering, the standard. This is where intention meets possibility, and where the shape of your Emperor first forms.',
+    img: images.blackProfile,
+    alt: 'Emperor I — obsidian profile',
+    imgFirst: true,
+  },
+  {
+    numeral: 'III',
+    title: 'The Design Dialogue',
+    body: 'From a palette of twenty-four exotic leathers and seventy-eight wood veneers, accented in twenty-four-karat gold, your specification is composed line by line. Nothing is preset. Every surface, stitch, and finish is chosen in partnership — until the design is unmistakably, only yours.',
+    img: images.dashboard,
+    alt: 'Emperor I — interior',
+    imgFirst: false,
+  },
+  {
+    numeral: 'IV',
+    title: 'The Build',
+    body: 'Your Emperor is brought to life upon the Maybach S600, its 6.2-litre twin-turbocharged V12 entrusted to Brabus and elevated to 888 horsepower. Master craftsmen then commit themselves to the cabin and the gold. The work takes as long as mastery demands. Nothing is hurried; everything is exact.',
+    img: images.behind,
+    alt: 'Emperor I — rear',
+    imgFirst: true,
+  },
+  {
+    numeral: 'V',
+    title: 'The Delivery',
+    body: 'Your Emperor is delivered into your keeping — complete, singular, and built to outlast its century. The collaboration ends; the heirloom begins its life. From here, it is yours to drive into history.',
+    img: images.sideLook,
+    alt: 'Emperor I — side look',
+    imgFirst: false,
+  },
+];
+---
+
+<Layout
+  title="The Commission"
+  description="Commissioning the Emperor I by Scaldarsi Motors — a private collaboration in five stages, from inquiry to delivery. 110 units. By appointment only. Montreal & Riyadh."
+  ogImage="https://scaldarsimotors.b-cdn.net/front-dark.jpg"
+  ogImageAlt="The Emperor I by Scaldarsi Motors"
+>
+
+  <!-- HERO: Full viewport, frontDark, left-dark gradient -->
+  <section style="height:100vh;position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:flex-start;">
+    <img
+      src={images.frontDark}
+      alt="The Emperor I by Scaldarsi Motors"
+      width="1920"
+      height="1080"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;"
+    />
+    <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 55%, rgba(0,0,0,0.1) 100%);"></div>
+    <div style="position:relative;z-index:1;padding:0 80px 100px;max-width:680px;" class="fade-in">
+      <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:20px;">By Appointment Only</p>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(52px,7vw,96px);font-weight:400;color:#fff;line-height:1;margin-bottom:24px;">The<br/>Commission</h1>
+      <div class="gold-divider" style="margin:0 0 28px 0;"></div>
+      <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.8;max-width:480px;margin-bottom:40px;">
+        An Emperor is not bought. It is commissioned — a singular collaboration between you and the masters who will build it.
+      </p>
+      <a href="/about#contact" class="btn-gold">Begin Your Inquiry</a>
+    </div>
+  </section>
+
+  <!-- SECTION 2 — LEDE -->
+  <section style="padding:140px 80px;text-align:center;">
+    <div style="max-width:800px;margin:0 auto;">
+      <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:#C9A96E;margin-bottom:20px;">The Beginning</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,56px);font-weight:400;color:#fff;line-height:1.15;margin-bottom:24px;">One of One Hundred<br/>and Ten</h2>
+      <div class="gold-divider" style="margin:0 auto 32px;"></div>
+      <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;">
+        Only 110 examples of the Emperor I will ever exist. Each is composed in private, over time, in dialogue with its owner. There is no configurator, no showroom floor, no two alike. To commission an Emperor is to author a chapter in something rare — and to receive, at the end, not a car, but an heirloom.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 3 — THE JOURNEY: five alternating rows -->
+  <section style="padding:0 0 120px;">
+    <div style="max-width:1400px;margin:0 auto;padding:0 80px;" class="journey-wrap">
+      {stages.map((stage) => (
+        <div class="journey-row" style={`display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;margin-bottom:120px;${stage.imgFirst ? 'direction:rtl;' : ''}`}>
+          <div style="direction:ltr;">
+            <p style="font-family:'Cinzel',serif;font-size:24px;letter-spacing:0.1em;color:#C9A96E;margin-bottom:12px;">{stage.numeral}</p>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,44px);font-weight:400;color:#fff;line-height:1.2;margin-bottom:20px;">{stage.title}</h3>
+            <div class="gold-divider" style="margin:0 0 24px 0;"></div>
+            <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);line-height:1.9;">{stage.body}</p>
+          </div>
+          <div style="direction:ltr;position:relative;">
+            <img
+              src={stage.img}
+              alt={stage.alt}
+              width="700"
+              height="500"
+              loading="lazy"
+              decoding="async"
+              style="width:100%;height:auto;object-fit:cover;border:1px solid rgba(201,169,110,0.2);display:block;"
+            />
+            <div style="position:absolute;bottom:-16px;right:-16px;width:75%;height:75%;border:1px solid rgba(201,169,110,0.12);z-index:-1;"></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- SECTION 4 — PULLQUOTE BAND -->
+  <section style="position:relative;overflow:hidden;">
+    <img
+      src={images.silhouette}
+      alt="Emperor I — silhouette"
+      width="1920"
+      height="1080"
+      loading="lazy"
+      decoding="async"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;"
+    />
+    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.72);"></div>
+    <div style="position:relative;z-index:1;padding:120px 80px;text-align:center;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3.5vw,44px);font-style:italic;color:#fff;line-height:1.5;max-width:860px;margin:0 auto;">
+        "Take the journey with us, and watch as we script art into history."
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 5 — CLOSE + CTA -->
+  <section style="background:#1C1C1C;padding:140px 80px;text-align:center;border-top:1px solid rgba(201,169,110,0.1);">
+    <p style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px;">110 Units · By Appointment Only</p>
+    <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;margin-bottom:48px;">Montreal · Riyadh</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,56px);font-weight:400;color:#fff;margin-bottom:48px;">Begin Your Commission</h2>
+    <a href="/about#contact" class="btn-gold">Begin Your Inquiry</a>
+  </section>
+
+</Layout>
+
+<style>
+  @media (max-width: 768px) {
+    .journey-row {
+      grid-template-columns: 1fr !important;
+      direction: ltr !important;
+      gap: 40px !important;
+      margin-bottom: 80px !important;
+    }
+    .journey-wrap {
+      padding: 0 24px !important;
+    }
+    section[style*="padding:140px 80px"] {
+      padding: 80px 24px !important;
+    }
+    section[style*="padding:0 0 120px"] {
+      padding: 0 0 60px !important;
+    }
+  }
+</style>

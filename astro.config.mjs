@@ -10,8 +10,9 @@ export default defineConfig({
       serialize(item) {
         const priorities = {
           '/':          { priority: 1.0, changefreq: 'monthly' },
-          '/emperor/':  { priority: 0.9, changefreq: 'monthly' },
-          '/yachts/':   { priority: 0.7, changefreq: 'monthly' },
+          '/emperor/':     { priority: 0.9, changefreq: 'monthly' },
+          '/commission/':  { priority: 0.8, changefreq: 'monthly' },
+          '/yachts/':      { priority: 0.7, changefreq: 'monthly' },
           '/jets/':     { priority: 0.7, changefreq: 'monthly' },
           '/about/':    { priority: 0.6, changefreq: 'monthly' },
         };
